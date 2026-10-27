@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surecheck | Homepage Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<link rel="icon" href="img/SureCheck-Logo.svg">
+<style>
+:root{--plum:#831466;--berry:#C2185B;--violet:#684280;--mist:#BAB3C1;--ink:#1d1424;--paper:#FBF8FA;--blush:#F6E9F1;--line:rgba(131,20,102,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{font-family:Montserrat,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.serif{font-family:Fraunces,serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.01em}
+.wrap{width:min(1320px,92vw);margin:0 auto}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--plum);display:inline-flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";width:28px;height:1px;background:currentColor}
+/* nav */
+header{position:fixed;inset:16px 0 auto;z-index:50;pointer-events:none}
+.nav{pointer-events:auto;width:min(1320px,94vw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 22px;border-radius:100px;background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.8);box-shadow:0 8px 30px rgba(131,20,102,.08)}
+.nav img{height:38px}
+.nav ul{display:flex;gap:4px;list-style:none}
+.nav ul a{font-size:13px;font-weight:600;padding:10px 14px;border-radius:40px;transition:.3s}
+.nav ul a:hover{background:var(--blush);color:var(--plum)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;padding:15px 26px;border-radius:60px;background:var(--plum);color:#fff;overflow:hidden;isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s;border:0;cursor:pointer}
+.btn:before{content:"";position:absolute;inset:0;background:var(--violet);transform:translateY(101%);border-radius:inherit;transition:transform .45s cubic-bezier(.7,0,.2,1);z-index:-1}
+.btn:hover:before{transform:none}.btn:hover{box-shadow:0 14px 30px rgba(131,20,102,.3)}
+.btn .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.18);transition:transform .35s}
+.btn:hover .arr{transform:rotate(-45deg)}
+.btn.ghost{background:transparent;color:var(--plum);box-shadow:inset 0 0 0 1.5px var(--plum)}
+.btn.ghost:before{background:var(--plum)}.btn.ghost:hover{color:#fff}
+.nav .btn{padding:11px 20px;font-size:13px}
+.burger{display:none}
+/* hero */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;background:radial-gradient(120% 90% at 70% 40%,#fff 0%,var(--blush) 55%,#ecd3e2 100%)}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(70% 70% at 60% 50%,#000,transparent);opacity:.55}
+.hero-type{position:absolute;left:4vw;top:50%;transform:translateY(-46%);z-index:3}
+.hero h1{font-weight:900;font-size:clamp(54px,9.4vw,168px);line-height:.86;letter-spacing:-.045em;text-transform:uppercase;color:var(--ink)}
+.hero h1 .l{display:block;overflow:hidden}.hero h1 .l span{display:inline-block}
+.hero h1 .serif{color:var(--plum);font-size:.92em}
+.hero p.lead{max-width:430px;margin:28px 0 30px;font-size:17px;line-height:1.6;color:#4b3f52}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-product{position:fixed;z-index:4;top:50%;left:68%;width:min(46vw,640px);transform:translate(-50%,-50%) rotate(-62deg);pointer-events:none;filter:drop-shadow(0 40px 50px rgba(131,20,102,.28))}
+.ticker{position:absolute;bottom:0;left:0;right:0;border-top:1px solid var(--line);padding:18px 0;white-space:nowrap;overflow:hidden;z-index:3;background:rgba(255,255,255,.5)}
+.ticker div{display:inline-block;font-weight:800;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--plum);animation:tick 30s linear infinite}
+.ticker b{color:var(--mist);margin:0 26px}
+@keyframes tick{to{transform:translateX(-50%)}}
+.badge{position:absolute;z-index:5;right:6vw;bottom:110px;width:136px;height:136px;border-radius:50%;background:var(--plum);color:#fff;display:grid;place-items:center;text-align:center}
+.badge svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.badge strong{font-size:30px;font-weight:900;line-height:1}.badge small{display:block;font-size:10px;letter-spacing:.14em;font-weight:700}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scroll-cue{position:absolute;left:4vw;bottom:80px;font-size:11px;font-weight:700;letter-spacing:.2em;color:#7a6b80;z-index:3}
+/* statement */
+.statement{padding:22vh 0 18vh;position:relative}
+.statement h2{font-weight:800;font-size:clamp(34px,5.4vw,88px);line-height:1.02;letter-spacing:-.035em;max-width:13.5em}
+.statement h2 .w{opacity:.12;transition:none}
+.statement h2 .serif{color:var(--plum)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:80px;border-top:1px solid var(--line)}
+.stat{padding:30px 24px 0 0}.stat+.stat{border-left:1px solid var(--line);padding-left:24px}
+.stat strong{display:block;font-size:clamp(40px,4.6vw,72px);font-weight:900;letter-spacing:-.04em;color:var(--plum);line-height:1}
+.stat span{display:block;margin-top:10px;font-size:14px;line-height:1.5;color:#5d5163;font-weight:500}
+/* products */
+.range{position:relative;background:var(--ink);color:#fff;border-radius:48px 48px 0 0;padding:140px 0 120px;overflow:hidden}
+.range .eyebrow{color:#e7a9d2}
+.range-head{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:70px}
+.range h2{font-size:clamp(44px,7vw,120px);font-weight:900;letter-spacing:-.045em;line-height:.9;text-transform:uppercase}
+.range h2 .serif{color:#e7a9d2}
+.range-head p{max-width:360px;color:#c9bccf;line-height:1.6}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pcard{position:relative;border-radius:32px;padding:44px;min-height:560px;background:linear-gradient(160deg,#2c1f34,#1f1626);border:1px solid rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.pcard:hover{transform:translateY(-8px)}
+.pcard .glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(194,24,91,.55),transparent 65%);left:50%;top:52%;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .5s;opacity:.7}
+.pcard:hover .glow{opacity:1}
+.pcard .tag{font-size:11px;font-weight:700;letter-spacing:.2em;color:#e7a9d2;text-transform:uppercase}
+.pcard h3{font-size:56px;font-weight:900;letter-spacing:-.04em;margin:10px 0 6px}
+.pcard p{color:#c9bccf;max-width:340px;line-height:1.6;font-size:15px}
+.pcard .pimg{position:relative;flex:1;display:grid;place-items:center;margin:20px -10px}
+.pcard .pimg img{width:100%;max-width:520px;transform:rotate(-14deg);transition:transform .8s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 30px 30px rgba(0,0,0,.45))}
+.pcard:hover .pimg img{transform:rotate(-6deg) scale(1.06)}
+.pcard .links{display:flex;gap:10px;flex-wrap:wrap;position:relative}
+.pcard .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}.pcard .btn.ghost:before{background:#fff}.pcard .btn.ghost:hover{color:var(--plum)}
+.pcard .btn{background:var(--berry)}
+.tech{margin-top:28px;border-radius:32px;padding:44px;display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;background:linear-gradient(110deg,var(--plum),var(--violet));}
+.tech strong{font-size:clamp(60px,7vw,110px);font-weight:900;letter-spacing:-.05em;line-height:.9}
+.tech h4{font-size:24px;font-weight:800;margin-bottom:8px}.tech p{color:#f0dcea;line-height:1.6;max-width:560px}
+.tech .seal{width:110px;height:110px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);display:grid;place-items:center;text-align:center;font-size:11px;font-weight:800;letter-spacing:.14em}
+/* how to use */
+.how{background:var(--paper);position:relative}
+.how-pin{height:100vh;display:flex;align-items:center;overflow:hidden}
+.how-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:6vw;align-items:center;width:min(1320px,92vw);margin:0 auto}
+.how h2{font-size:clamp(40px,5.6vw,92px);font-weight:900;letter-spacing:-.045em;line-height:.92;text-transform:uppercase;margin:18px 0 30px}
+.how h2 .serif{color:var(--plum)}
+.toggle{display:inline-flex;padding:5px;border-radius:50px;background:#fff;border:1px solid var(--line);margin-bottom:34px;position:relative}
+.toggle button{position:relative;z-index:1;border:0;background:none;font:700 13px Montserrat;padding:11px 22px;border-radius:40px;cursor:pointer;color:#6b5b72;transition:color .3s}
+.toggle button.on{color:#fff}
+.toggle .pill{position:absolute;top:5px;bottom:5px;left:5px;border-radius:40px;background:var(--plum);transition:all .45s cubic-bezier(.7,0,.2,1)}
+.steps{list-style:none;display:grid;gap:10px}
+.step{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start;padding:20px 22px;border-radius:22px;background:#fff;border:1px solid var(--line);cursor:pointer;transition:all .45s cubic-bezier(.2,.8,.2,1);opacity:.55}
+.step.on{opacity:1;box-shadow:0 20px 40px rgba(131,20,102,.1);border-color:rgba(131,20,102,.3);transform:translateX(10px)}
+.step .n{font-size:40px;font-weight:900;letter-spacing:-.04em;color:var(--plum);line-height:1}
+.step h5{font-size:16px;font-weight:800;margin-bottom:6px}.step p{font-size:14px;line-height:1.55;color:#5d5163}
+.stage{position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 45%,#fff,var(--blush) 70%);display:grid;place-items:center}
+.stage:before{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px dashed rgba(131,20,102,.25);animation:spin 60s linear infinite}
+.stage .ring{position:absolute;inset:0;transform:rotate(-90deg)}
+.stage .ring circle{fill:none;stroke:var(--plum);stroke-width:2;stroke-linecap:round}
+.stage img.dev{width:84%;transition:transform 1s cubic-bezier(.7,0,.2,1),opacity .5s}
+.stage .timer{position:absolute;bottom:13%;left:50%;transform:translateX(-50%);background:#fff;border-radius:40px;padding:10px 18px;font-weight:800;font-size:13px;box-shadow:0 10px 30px rgba(131,20,102,.12);display:flex;gap:8px;align-items:center;white-space:nowrap}
+.stage .timer i{width:8px;height:8px;border-radius:50%;background:var(--berry);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.8);opacity:.3}}
+.stage .drop{position:absolute;top:22%;right:30%;width:22px;height:30px;background:#f3d36b;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:0}
+/* results */
+.results{padding:140px 0;background:#fff;position:relative}
+.results-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px}
+.results h2{font-size:clamp(40px,5.6vw,92px);font-weight:900;letter-spacing:-.045em;line-height:.92;text-transform:uppercase;margin-top:18px}
+.results h2 .serif{color:var(--plum)}
+.results-head p{font-size:17px;line-height:1.65;color:#4b3f52;max-width:520px}
+.rgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.rcard{border-radius:28px;padding:36px;border:1px solid var(--line);background:var(--paper);position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
+.rcard:hover{transform:translateY(-6px);box-shadow:0 30px 50px rgba(131,20,102,.1)}
+.rcard .label{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.window{margin:26px 0;height:110px;border-radius:60px;background:#fff;border:2px solid #e8dbe4;display:flex;align-items:center;justify-content:center;gap:34px;position:relative}
+.window .ln{width:7px;height:62px;border-radius:4px;background:var(--berry);transform:scaleY(0);transform-origin:bottom}
+.window .ln.faint{opacity:.35}
+.window .mk{position:absolute;bottom:-24px;font-size:11px;font-weight:800;color:#9a8aa0;letter-spacing:.2em;display:flex;gap:30px}
+.rcard h4{font-size:26px;font-weight:900;letter-spacing:-.02em;margin:34px 0 10px}
+.rcard p{font-size:15px;line-height:1.6;color:#5d5163}
+.rcard.pos{background:linear-gradient(160deg,#fff,var(--blush))}
+.note{margin-top:24px;display:flex;gap:16px;align-items:center;padding:20px 26px;border-radius:20px;background:var(--ink);color:#fff;font-size:14px;line-height:1.6}
+.note b{color:#e7a9d2}
+/* campaign */
+.campaign{position:relative;height:100vh;min-height:640px;overflow:hidden;background:var(--plum);color:#fff;display:flex;align-items:center}
+.campaign .big{position:absolute;white-space:nowrap;font-weight:900;font-size:22vw;letter-spacing:-.05em;line-height:.8;color:rgba(255,255,255,.07);text-transform:uppercase}
+.campaign .big.a{top:4%}.campaign .big.b{bottom:2%}
+.camp-inner{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.campaign .eyebrow{color:#f4c4e4}
+.campaign h2{font-size:clamp(48px,7.4vw,128px);font-weight:900;letter-spacing:-.05em;line-height:.88;margin:22px 0 28px}
+.campaign h2 .serif{color:#f9cfe8}
+.campaign p{max-width:500px;line-height:1.7;color:#f1d8ea;margin-bottom:34px}
+.campaign .btn{background:#fff;color:var(--plum)}.campaign .btn:before{background:var(--ink)}.campaign .btn:hover{color:#fff}
+.photo-stack{position:relative;height:540px}
+.photo-stack figure{position:absolute;border-radius:28px;overflow:hidden;box-shadow:0 40px 70px rgba(0,0,0,.35)}
+.photo-stack figure img{width:100%;height:100%;object-fit:cover}
+.photo-stack .p1{width:78%;height:72%;right:0;top:0}
+.photo-stack .p2{width:56%;height:46%;left:0;bottom:0;border:6px solid var(--plum)}
+.photo-stack .chip{position:absolute;right:6%;bottom:12%;background:#fff;color:var(--ink);border-radius:20px;padding:16px 20px;font-weight:800;font-size:14px;box-shadow:0 20px 40px rgba(0,0,0,.25)}
+.photo-stack .chip small{display:block;font-weight:600;color:#7a6b80;font-size:12px;margin-top:4px}
+/* blog */
+.blog{padding:140px 0 120px;background:var(--paper)}
+.blog-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:50px;gap:30px}
+.blog h2{font-size:clamp(40px,5.6vw,92px);font-weight:900;letter-spacing:-.045em;line-height:.92;text-transform:uppercase;margin-top:18px}
+.blog h2 .serif{color:var(--plum)}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.cats span{font-size:13px;font-weight:700;padding:10px 18px;border-radius:40px;border:1px solid var(--line);background:#fff;cursor:pointer;transition:.3s}
+.cats span:hover,.cats span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bgrid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:22px}
+.post{border-radius:28px;overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.post:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(131,20,102,.12)}
+.post .im{overflow:hidden;aspect-ratio:4/3}.post.feat .im{aspect-ratio:auto;flex:1;min-height:300px}
+.post .im img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.post:hover .im img{transform:scale(1.07)}
+.post .tx{padding:24px 26px 28px}
+.post .tx small{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--plum);text-transform:uppercase}
+.post h3{font-size:20px;font-weight:800;line-height:1.3;letter-spacing:-.01em;margin-top:10px}
+.post.feat h3{font-size:28px}
+.post .rd{margin-top:16px;font-size:13px;font-weight:700;display:inline-flex;gap:8px;align-items:center;color:var(--plum)}
+.post .rd i{transition:transform .3s;font-style:normal}.post:hover .rd i{transform:translateX(6px)}
+/* faq */
+.faq{padding:120px 0;background:#fff}
+.faq-in{display:grid;grid-template-columns:.8fr 1.2fr;gap:6vw}
+.faq h2{font-size:clamp(40px,5vw,80px);font-weight:900;letter-spacing:-.045em;line-height:.92;text-transform:uppercase;margin:18px 0 24px;position:sticky;top:120px}
+.faq h2 .serif{color:var(--plum)}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;text-align:left;background:none;border:0;font:800 18px/1.4 Montserrat;color:var(--ink);padding:28px 50px 28px 0;cursor:pointer;position:relative}
+.qa button:after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--blush);color:var(--plum);display:grid;place-items:center;font-size:22px;font-weight:500;transition:transform .4s,background .3s}
+.qa.open button:after{transform:translateY(-50%) rotate(45deg);background:var(--plum);color:#fff}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.2,.8,.2,1)}
+.qa .a p{padding:0 50px 28px 0;color:#5d5163;line-height:1.7}
+/* footer */
+footer{background:var(--ink);color:#fff;padding:110px 0 40px;border-radius:48px 48px 0 0;overflow:hidden}
+.f-top{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;padding-bottom:70px;border-bottom:1px solid rgba(255,255,255,.12)}
+.f-top h3{font-size:clamp(34px,4vw,60px);font-weight:900;letter-spacing:-.04em;line-height:1}
+.f-top h3 .serif{color:#e7a9d2}
+.news{display:flex;gap:10px;margin-top:30px;max-width:520px}
+.news input{flex:1;border-radius:50px;border:1px solid rgba(255,255,255,.2);background:transparent;padding:16px 22px;color:#fff;font:500 15px Montserrat}
+.news .btn{background:var(--berry)}
+.f-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.f-cols h6{font-size:11px;letter-spacing:.2em;color:#9a8aa0;margin-bottom:16px;text-transform:uppercase}
+.f-cols a{display:block;padding:6px 0;color:#e6dbe9;font-size:15px;transition:color .3s,transform .3s}
+.f-cols a:hover{color:#e7a9d2;transform:translateX(4px)}
+.f-word{font-weight:900;font-size:21vw;letter-spacing:-.06em;line-height:.8;text-align:center;margin:60px 0 30px;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,0));-webkit-background-clip:text;background-clip:text;color:transparent}
+.f-bot{display:flex;justify-content:space-between;font-size:13px;color:#9a8aa0;gap:20px;flex-wrap:wrap}
+/* responsive */
+@media (max-width:1000px){
+ .nav ul{display:none}.burger{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--plum);color:#fff;border:0;font-size:18px}
+ .nav .btn{display:none}
+ .hero{min-height:760px}
+ .hero-type{top:120px;transform:none;left:6vw;right:6vw}
+ .hero p.lead{font-size:15px;margin:20px 0 22px}
+ .hero-product{left:62%;top:76%;width:80vw}
+ .badge{width:96px;height:96px;left:6vw;right:auto;bottom:90px}.badge strong{font-size:22px}
+ .scroll-cue{display:none}
+ .stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}
+ .range-head,.blog-head{flex-direction:column;align-items:start}
+ .cards,.rgrid,.bgrid,.results-head,.faq-in,.f-top,.camp-inner,.how-inner{grid-template-columns:1fr}
+ .pcard{min-height:460px;padding:30px}.pcard h3{font-size:42px}
+ .tech{grid-template-columns:1fr;gap:18px;padding:32px}
+ .how-pin{height:auto;padding:110px 0}
+ .stage{max-width:440px;width:100%;margin:0 auto}
+ .step.on{transform:none}
+ .photo-stack{height:400px}
+ .faq h2{position:static}
+ .range,.results,.blog{padding:100px 0}
+ .campaign{height:auto;padding:110px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><nav class="nav">
+ <a href="#top" aria-label="Surecheck home"><img src="img/SureCheck-Logo.svg" alt="Surecheck"></a>
+ <ul><li><a href="#how">How To Use</a></li><li><a href="#faq">When to test?</a></li><li><a href="#range">Tests</a></li><li><a href="#faq">FAQs</a></li><li><a href="#blog">Blog</a></li><li><a href="#blog">Sex-Ed</a></li></ul>
+ <a class="btn" href="#range">Find your test <span class="arr">→</span></a>
+ <button class="burger" aria-label="Menu">☰</button>
+</nav></header>
+
+<section class="hero" id="top">
+ <div class="grid-bg"></div>
+ <div class="hero-type">
+  <span class="eyebrow">20 years of accurate answers</span>
+  <h1 style="margin-top:22px"><span class="l"><span>Anytime.</span></span><span class="l"><span>Anywhere.</span></span><span class="l"><span class="serif">Anyone.</span></span></h1>
+  <p class="lead">The test which is by your side, no matter the result. Over 99% accuracy from the first day of a missed period.</p>
+  <div class="ctas"><a class="btn" href="#range">Explore the tests <span class="arr">→</span></a><a class="btn ghost" href="#how">How to use</a></div>
+ </div>
+ <div class="badge"><svg viewBox="0 0 136 136"><defs><path id="c" d="M68,68 m-54,0 a54,54 0 1,1 108,0 a54,54 0 1,1 -108,0"/></defs><text fill="#f4c4e4" font-size="10.5" font-weight="700" letter-spacing="3.2" font-family="Montserrat"><textPath href="#c">COLLOIDAL GOLD TECHNOLOGY • SURECHECK • </textPath></text></svg><div><strong>99%</strong><small>ACCURACY</small></div></div>
+ <div class="scroll-cue">SCROLL TO DISCOVER ↓</div>
+ <div class="ticker"><div>Result in 3 minutes <b>✦</b> Over 99% accuracy <b>✦</b> From the first day of a missed period <b>✦</b> Any time of the day <b>✦</b> Streamer &amp; Cassette <b>✦</b> Result in 3 minutes <b>✦</b> Over 99% accuracy <b>✦</b> From the first day of a missed period <b>✦</b> Any time of the day <b>✦</b> Streamer &amp; Cassette <b>✦</b>&nbsp;</div></div>
+</section>
+<img class="hero-product" id="heroProduct" src="img/Surecheck-Streamer-1-1.png" alt="Surecheck Streamer pregnancy test">
+
+<section class="statement wrap" id="story">
+ <span class="eyebrow">Our story</span>
+ <h2 style="margin-top:26px" id="stmt">20 years is not just time. These are millions of unique stories of hope, anticipation, joy and sometimes anxiety. When <span class="serif">an accurate answer</span> is all you need, Surecheck is there.</h2>
+ <div class="stats">
+  <div class="stat"><strong data-count="99" data-suffix="%+">0</strong><span>Accuracy from the first day of a missed period</span></div>
+  <div class="stat"><strong data-count="3" data-suffix=" min">0</strong><span>Until your result appears</span></div>
+  <div class="stat"><strong data-count="20" data-suffix=" yrs">0</strong><span>By the side of millions of women</span></div>
+  <div class="stat"><strong data-count="2" data-suffix=" tests">0</strong><span>Streamer and Cassette, one trusted standard</span></div>
+ </div>
+</section>
+
+<section class="range" id="range">
+ <div class="wrap">
+  <div class="range-head">
+   <div><span class="eyebrow">The Surecheck range</span><h2 style="margin-top:20px">Two tests.<br><span class="serif">One sure</span> answer.</h2></div>
+   <p>Developed with Colloidal Gold technology. Use as early as day one of a missed period, at any time of the day.</p>
+  </div>
+  <div class="cards">
+   <article class="pcard"><div class="glow"></div><span class="tag">Midstream test</span><h3>Streamer</h3><p>Urinate directly on the absorbent tip for 3 to 5 seconds. Result within 3 minutes.</p>
+    <div class="pimg"><img id="streamerSlot" src="img/Surecheck-Streamer-1-1.png" alt="Surecheck Streamer"></div>
+    <div class="links"><a class="btn" href="#how">How to use <span class="arr">→</span></a><a class="btn ghost" href="#read">How to read</a></div></article>
+   <article class="pcard"><div class="glow"></div><span class="tag">Cassette test</span><h3>Cassette</h3><p>A precise cassette format with a clear C and T result window. Result within 3 minutes.</p>
+    <div class="pimg"><img src="img/Cassette-1.png" alt="Surecheck Cassette"></div>
+    <div class="links"><a class="btn" href="#how">How to use <span class="arr">→</span></a><a class="btn ghost" href="#read">How to read</a></div></article>
+  </div>
+  <div class="tech"><strong>99%<sup style="font-size:.4em">+</sup></strong><div><h4>Advanced Surecheck Technology</h4><p>Surecheck tests are developed with special Colloidal Gold technology that guarantees over 99% accuracy from the first day of a missed period.</p></div><div class="seal">CE<br>CERTIFIED</div></div>
+ </div>
+</section>
+
+<section class="how" id="how"><div class="how-pin"><div class="how-inner">
+ <div>
+  <span class="eyebrow">How to use</span>
+  <h2>Three easy <span class="serif">steps.</span></h2>
+  <div class="toggle"><span class="pill" id="pill"></span><button class="on" data-dev="streamer">Streamer</button><button data-dev="cassette">Cassette</button></div>
+  <ol class="steps" id="steps">
+   <li class="step on" data-i="0"><span class="n">01</span><div><h5>Open</h5><p>Open the protective foil packaging immediately before use. Remove the test from the packaging.</p></div></li>
+   <li class="step" data-i="1"><span class="n">02</span><div><h5>Test</h5><p data-s="Urinate on the absorbent tip for 3 to 5 seconds until the entire tip is covered." data-c="Add the urine sample to the sample well as described in the leaflet.">Urinate on the absorbent tip for 3 to 5 seconds until the entire tip is covered.</p></div></li>
+   <li class="step" data-i="2"><span class="n">03</span><div><h5>Read</h5><p>The result will appear within 3 minutes. A faint test line means you are pregnant.</p></div></li>
+  </ol>
+ </div>
+ <div class="stage" id="stage">
+  <svg class="ring" viewBox="0 0 100 100"><circle id="ringC" cx="50" cy="50" r="49" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0.67"/></svg>
+  <span class="drop" id="drop"></span>
+  <img class="dev" id="dev" src="img/Surecheck-Streamer-1-1.png" alt="Surecheck test">
+  <div class="timer"><i></i><span id="timerTx">Step 1 of 3 · Open</span></div>
+ </div>
+</div></div></section>
+
+<section class="results" id="read">
+ <div class="wrap">
+  <div class="results-head">
+   <div><span class="eyebrow">Reading your result</span><h2>Clear lines.<br><span class="serif">Calm</span> answers.</h2></div>
+   <p>Place your test on a flat surface with the result window facing up. Pink colour moving across the window shows the test is working. Read the result in 3 minutes.</p>
+  </div>
+  <div class="rgrid">
+   <div class="rcard pos"><span class="label" style="color:var(--plum)">● Pregnant</span><div class="window"><span class="ln"></span><span class="ln"></span><div class="mk"><span>C</span><span>T</span></div></div><h4>Two colour lines</h4><p>Two lines in the test window mean pregnant, even if one line is lighter than the other. See your healthcare professional if you have a positive result.</p></div>
+   <div class="rcard pos"><span class="label" style="color:var(--plum)">● Pregnant (faint line)</span><div class="window"><span class="ln"></span><span class="ln faint"></span><div class="mk"><span>C</span><span>T</span></div></div><h4>A pale second line</h4><p>A pale second line still means you are pregnant.</p></div>
+   <div class="rcard"><span class="label" style="color:#6b5b72">○ Not pregnant</span><div class="window"><span class="ln"></span><span style="width:7px"></span><div class="mk"><span>C</span><span>T</span></div></div><h4>One colour line</h4><p>Only one line means not pregnant. Testing too early can also show this result, so take another test in a few days to confirm.</p></div>
+  </div>
+  <div class="note"><span style="font-size:22px">⏱</span><span><b>Good to know:</b> Any result after the 10th minute should be disregarded. If you are unsure, please ask a doctor to interpret the result.</span></div>
+ </div>
+</section>
+
+<section class="campaign" id="campaign">
+ <div class="big a" id="bigA">No matter the result · No matter the result ·</div>
+ <div class="big b" id="bigB">Share your story · Share your story ·</div>
+ <div class="wrap camp-inner">
+  <div><span class="eyebrow">Campaign · 20 years</span><h2>Millions of stories.<br><span class="serif">Yours</span> matters.</h2><p>For two decades, Surecheck has been with millions of women in those important moments. Join our community and share your story today.</p><a class="btn" href="#">Share your story <span class="arr">→</span></a></div>
+  <div class="photo-stack">
+   <figure class="p1" data-speed="-60"><img src="img/opening-photo-2-768x512.png" alt="Surecheck campaign visual"></figure>
+   <figure class="p2" data-speed="60"><img src="img/polina-kuzovkova-PZLw-OkcLqA-unsplash-768x512.jpg" alt="Friends together"></figure>
+   <div class="chip">The test by your side<small>no matter the result</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="blog" id="blog">
+ <div class="wrap">
+  <div class="blog-head"><div><span class="eyebrow">Blog &amp; Sex-Ed</span><h2>Read, learn,<br><span class="serif">feel seen.</span></h2></div><a class="btn ghost" href="#">All articles <span class="arr">→</span></a></div>
+  <div class="cats"><span class="on">All</span><span>Relationships</span><span>Wellbeing</span><span>Pregnancy</span><span>Sex-Ed</span></div>
+  <div class="bgrid">
+   <a class="post feat" href="#"><div class="im"><img src="img/kateryna-hliznitsova-cXj5cbycwT0-unsplash-2-1-768x521.jpg" alt=""></div><div class="tx"><small>Relationships</small><h3>Love, likes and first nights together: The rules of new relationships</h3><span class="rd">Read article <i>→</i></span></div></a>
+   <a class="post" href="#"><div class="im"><img src="img/polina-kuzovkova-PZLw-OkcLqA-unsplash-768x512.jpg" alt=""></div><div class="tx"><small>Wellbeing</small><h3>Female friendship: The invisible foundation of every woman</h3><span class="rd">Read article <i>→</i></span></div></a>
+   <a class="post" href="#"><div class="im"><img src="img/SureCheck-Diagonal.png" alt="" style="object-fit:contain;background:var(--blush);padding:20px"></div><div class="tx"><small>Pregnancy</small><h3>The strange history of pregnancy tests: From barley seeds to TikTok hacks</h3><span class="rd">Read article <i>→</i></span></div></a>
+  </div>
+ </div>
+</section>
+
+<section class="faq" id="faq"><div class="wrap faq-in">
+ <div><span class="eyebrow">FAQs</span><h2>Chances are someone <span class="serif">asked it too.</span></h2></div>
+ <div id="qas">
+  <div class="qa open"><button>When can I use the test?</button><div class="a"><p>Surecheck can be used as early as day one of a missed period, at any time of the day.</p></div></div>
+  <div class="qa"><button>I have an irregular period. How do I know when to do the test?</button><div class="a"><p>If your period is irregular, you can use Surecheck 19 days after you think you may have conceived. If the result is negative, you may test again in 48 hours.</p></div></div>
+  <div class="qa"><button>What should I do if the line in the test region (T) is very pale?</button><div class="a"><p>A pale second line means you are pregnant.</p></div></div>
+  <div class="qa"><button>Can test results be interpreted after 10 minutes?</button><div class="a"><p>No. Any results after the 10th minute should be disregarded.</p></div></div>
+  <div class="qa"><button>What circumstances may affect the result?</button><div class="a"><p>Certain medications may affect the result. Within the first 8 weeks following childbirth or abortion, a false positive result is possible. Large amounts of liquids may lower the hCG concentration in urine. Birth control pills, antibiotics, painkillers and alcohol will not affect the result.</p></div></div>
+ </div>
+</div></section>
+
+<footer><div class="wrap">
+ <div class="f-top">
+  <div><img src="img/surecheck_vector_white-2.svg" alt="Surecheck" style="height:56px;margin-bottom:30px"><h3>Join the <span class="serif">conversation.</span></h3>
+   <form class="news" onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Email"><button class="btn">Sign up <span class="arr">→</span></button></form></div>
+  <div class="f-cols">
+   <div><h6>Tests</h6><a href="#range">Streamer</a><a href="#range">Cassette</a><a href="#how">How to use</a><a href="#read">How to read</a></div>
+   <div><h6>Learn</h6><a href="#faq">When to test?</a><a href="#faq">FAQs</a><a href="#blog">Blog</a><a href="#blog">Sex-Ed</a></div>
+   <div><h6>Surecheck</h6><a href="#">About Us</a><a href="#">Contact Us</a><a href="#campaign">Share your story</a><a href="#">Privacy Policy</a></div>
+  </div>
+ </div>
+ <div class="f-word">surecheck</div>
+ <div class="f-bot"><span>Copyright © 2026, Unicoms. All Rights Reserved.</span><span>Homepage design concept · not the live site</span></div>
+</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const mobile=matchMedia('(max-width:1000px)').matches;
+if(window.Lenis&&!navigator.webdriver){const lenis=new Lenis({lerp:.09});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-20})}}));}
+// intro
+const P=document.getElementById('heroProduct');
+gsap.from('.hero h1 .l span',{yPercent:110,duration:1.2,ease:'expo.out',stagger:.12,delay:.2});
+gsap.from('.hero .eyebrow,.hero p.lead,.hero .ctas,.badge,.scroll-cue',{opacity:0,y:30,duration:1,ease:'power3.out',stagger:.08,delay:.6});
+gsap.from(P,{xPercent:60,yPercent:-30,rotation:-120,scale:.6,opacity:0,duration:1.8,ease:'expo.out',delay:.1,clearProps:'opacity'});
+// mouse parallax
+addEventListener('mousemove',e=>{gsap.to('.grid-bg',{x:(e.clientX/innerWidth-.5)*-30,y:(e.clientY/innerHeight-.5)*-30,duration:1.2})});
+// product travels: hero -> statement -> into Streamer card
+const slot=document.getElementById('streamerSlot');
+function slotPos(){const r=slot.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2,w:r.width}}
+const tl=gsap.timeline({scrollTrigger:{trigger:'.hero',start:'top top',endTrigger:'#range',end:'top 20%',scrub:1,invalidateOnRefresh:true,
+ onLeave:()=>{gsap.set(P,{autoAlpha:0});gsap.set(slot,{autoAlpha:1})},onEnterBack:()=>{gsap.set(P,{autoAlpha:1});gsap.set(slot,{autoAlpha:0})}}});
+gsap.set(slot,{autoAlpha:0});
+tl.to(P,{left:mobile?'50%':'78%',top:'50%',rotation:-90,width:mobile?'70vw':'34vw',ease:'none',duration:1})
+  .to(P,{left:mobile?'50%':'74%',top:'72%',rotation:-40,ease:'power1.inOut',duration:.8})
+  .to(P,{left:mobile?'50%':'25%',top:'64%',rotation:-14,width:()=>slot.getBoundingClientRect().width+'px',ease:'power2.inOut',duration:1});
+ScrollTrigger.create({trigger:'#range',start:'top 20%',onEnter:()=>{gsap.set(P,{autoAlpha:0});gsap.set(slot,{autoAlpha:1})}});
+gsap.to('.hero-type',{yPercent:-30,opacity:0,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+// statement word reveal
+const st=document.getElementById('stmt');
+function wrapWords(n){[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(w.trim()){const s=document.createElement('span');s.className='w';s.textContent=w;f.appendChild(s)}else f.appendChild(document.createTextNode(w))});n.replaceChild(f,c)}else if(c.nodeType===1){c.classList.add('w')}})}
+wrapWords(st);
+gsap.to('#stmt .w',{opacity:1,stagger:.05,ease:'none',scrollTrigger:{trigger:st,start:'top 80%',end:'bottom 45%',scrub:true}});
+document.querySelectorAll('[data-count]').forEach(el=>{const o={v:0};gsap.to(o,{v:+el.dataset.count,duration:1.6,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'},onUpdate:()=>el.textContent=Math.round(o.v)+el.dataset.suffix})});
+// range
+gsap.from('.range h2',{yPercent:40,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.range',start:'top 70%'}});
+gsap.from('.pcard',{y:120,opacity:0,stagger:.15,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.cards',start:'top 85%'}});
+gsap.from('.tech',{scaleX:.85,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.tech',start:'top 90%'}});
+// how to use
+const steps=[...document.querySelectorAll('.step')],dev=document.getElementById('dev'),ring=document.getElementById('ringC'),tx=document.getElementById('timerTx'),drop=document.getElementById('drop');
+const labels=['Open','Test · 3 to 5 seconds','Read · within 3 minutes'];
+let device='streamer',cur=0;
+function setStep(i){cur=i;steps.forEach((s,k)=>s.classList.toggle('on',k===i));gsap.to(ring,{strokeDashoffset:1-(i+1)/3,duration:.8,ease:'power3.out'});
+ tx.textContent=`Step ${i+1} of 3 · ${labels[i]}`;
+ const rot=[[-20,1],[ -90,.95],[0,1.08]][i];gsap.to(dev,{rotation:rot[0],scale:rot[1],duration:1,ease:'expo.out'});
+ gsap.to(drop,{opacity:i===1&&device==='streamer'?1:0,y:i===1?40:0,duration:.6,repeat:i===1?-1:0,yoyo:false})}
+steps.forEach(s=>s.addEventListener('click',()=>setStep(+s.dataset.i)));
+const pill=document.getElementById('pill'),tbtn=[...document.querySelectorAll('.toggle button')];
+function movePill(b){pill.style.width=b.offsetWidth+'px';pill.style.transform=`translateX(${b.offsetLeft-5}px)`}
+tbtn.forEach(b=>b.addEventListener('click',()=>{tbtn.forEach(x=>x.classList.toggle('on',x===b));movePill(b);device=b.dataset.dev;
+ gsap.to(dev,{opacity:0,scale:.8,duration:.3,onComplete:()=>{dev.src=device==='streamer'?'img/Surecheck-Streamer-1-1.png':'img/Cassette-1.png';const p=steps[1].querySelector('p');p.textContent=device==='streamer'?p.dataset.s:p.dataset.c;gsap.to(dev,{opacity:1,scale:1,duration:.6});setStep(cur)}})}));
+addEventListener('load',()=>movePill(tbtn[0]));movePill(tbtn[0]);
+setStep(0);
+if(!mobile){ScrollTrigger.create({trigger:'.how-pin',start:'top top',end:'+=1400',pin:true,onUpdate:s=>{const i=Math.min(2,Math.floor(s.progress*3));if(i!==cur)setStep(i)}});}
+// results
+document.querySelectorAll('.rcard').forEach((c,k)=>{gsap.to(c.querySelectorAll('.ln'),{scaleY:1,stagger:.35,duration:1,ease:'expo.out',scrollTrigger:{trigger:c,start:'top 80%'}})});
+gsap.from('.rcard',{y:80,opacity:0,stagger:.12,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.rgrid',start:'top 85%'}});
+// campaign
+gsap.fromTo('#bigA',{xPercent:0},{xPercent:-35,ease:'none',scrollTrigger:{trigger:'.campaign',scrub:true}});
+gsap.fromTo('#bigB',{xPercent:-35},{xPercent:0,ease:'none',scrollTrigger:{trigger:'.campaign',scrub:true}});
+document.querySelectorAll('[data-speed]').forEach(f=>gsap.fromTo(f,{y:-f.dataset.speed},{y:+f.dataset.speed,ease:'none',scrollTrigger:{trigger:'.campaign',scrub:true}}));
+gsap.from('.campaign h2',{yPercent:30,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.campaign',start:'top 60%'}});
+// blog
+gsap.from('.post',{y:100,opacity:0,stagger:.12,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.bgrid',start:'top 85%'}});
+document.querySelectorAll('.cats span').forEach(s=>s.onclick=()=>{document.querySelectorAll('.cats span').forEach(x=>x.classList.toggle('on',x===s))});
+// faq
+document.querySelectorAll('.qa').forEach(q=>{const a=q.querySelector('.a');if(q.classList.contains('open'))a.style.maxHeight=a.scrollHeight+'px';
+ q.querySelector('button').onclick=()=>{const o=q.classList.toggle('open');a.style.maxHeight=o?a.scrollHeight+'px':0}});
+gsap.from('.f-word',{yPercent:50,opacity:0,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'footer',start:'top 60%'}});
+// magnetic buttons
+document.querySelectorAll('.btn').forEach(b=>{b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();gsap.to(b,{x:(e.clientX-r.left-r.width/2)*.25,y:(e.clientY-r.top-r.height/2)*.35,duration:.4})});b.addEventListener('mouseleave',()=>gsap.to(b,{x:0,y:0,duration:.6,ease:'elastic.out(1,.4)'}))});
+</script>
+</body></html>
